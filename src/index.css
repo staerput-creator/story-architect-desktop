@@ -1,0 +1,275 @@
+:root {
+  --bg-color: #f8fafc;
+  --dots-color: #cbd5e1;
+  --node-bg: #ffffff;
+  --node-border: #e2e8f0;
+  --text-color: #0f172a;
+  --panel-bg: #ffffff;
+  --panel-text: #0f172a;
+  --decision-bg: #fef3c7;
+  --decision-border: #f59e0b;
+  --region-color: #3b82f6;
+}
+
+.edge-label-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  max-width: 260px;
+  pointer-events: all;
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--node-border);
+  border-radius: 12px;
+  padding: 5px 9px;
+  font-size: 0.74rem;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.edge-label-pill:hover {
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+}
+.condition-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; }
+.condition-chip {
+  border: 1px solid #f59e0b;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 9px;
+  padding: 2px 5px;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* Сюжетные области всегда лежат под сценами и линиями, не блокируя клики по узлам внутри */
+.react-flow__node-regionNode {
+  z-index: -1 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.react-flow__node-storyNode {
+  z-index: 10;
+}
+
+body.theme-light {
+  --bg-color: #f8fafc;
+  --dots-color: #cbd5e1;
+  --node-bg: #ffffff;
+  --node-border: #e2e8f0;
+  --text-color: #0f172a;
+  --panel-bg: #ffffff;
+  --panel-text: #0f172a;
+  --decision-bg: #fef3c7;
+  --decision-border: #f59e0b;
+}
+
+body.theme-dark {
+  --bg-color: #0f172a;
+  --dots-color: #334155;
+  --node-bg: #1e293b;
+  --node-border: #334155;
+  --text-color: #f8fafc;
+  --panel-bg: #1e293b;
+  --panel-text: #f8fafc;
+  --decision-bg: #422006;
+  --decision-border: #d97706;
+}
+
+body.theme-soft {
+  --bg-color: #fdf6e3;
+  --dots-color: #d3cbb7;
+  --node-bg: #eee8d5;
+  --node-border: #d3cbb7;
+  --text-color: #475b63;
+  --panel-bg: #eee8d5;
+  --panel-text: #475b63;
+  --decision-bg: #fdf6e3;
+  --decision-border: #b58900;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.react-flow__node-default {
+  background: var(--node-bg);
+  color: var(--text-color);
+  border-color: var(--node-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.react-flow__node-default.decision-node {
+  background: var(--decision-bg);
+  border: 2px solid var(--decision-border);
+  border-radius: 50px;
+  min-width: 150px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2.2px;
+}
+
+.react-flow__edge-textbg {
+  fill: var(--panel-bg, #1e293b) !important;
+  stroke: var(--node-border, #334155) !important;
+  stroke-width: 1px !important;
+  rx: 6px;
+  ry: 6px;
+}
+
+.react-flow__edge-text {
+  fill: var(--text-color, #f8fafc) !important;
+  color: var(--text-color, #f8fafc) !important;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.sa-edge-label-pill {
+  background-color: var(--panel-bg, #1e293b);
+  border: 1px solid var(--node-border, #334155);
+  color: var(--text-color, #f8fafc);
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.25;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: all;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 310px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.sa-edge-label-pill:hover {
+  border-color: #2563eb;
+}
+
+.sa-edge-lock-badge {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.42);
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+button {
+  transition: opacity 0.15s, transform 0.1s;
+  font-family: inherit;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+input, textarea, select {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--node-border);
+  padding: 8px;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid #2563eb;
+  border-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--node-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+div[style*="overflowX: 'auto'"]::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.sa-mobile-bottom-nav {
+  display: none;
+}
+
+.hide-mobile {
+  display: inline-flex;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .sa-left-palette,
+  .sa-left-palette-toggle {
+    display: none !important;
+  }
+
+  .sa-mobile-bottom-nav {
+    display: flex !important;
+  }
+
+  input, select, textarea, button {
+    font-size: 16px !important;
+  }
+
+  #root {
+    padding: 0 !important;
+  }
+}
